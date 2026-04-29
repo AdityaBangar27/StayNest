@@ -1,5 +1,7 @@
 # StayNest - Modern Property Rental Platform
 
+A modern web application designed to provide efficient, scalable, and user-friendly solutions with clean UI and optimized performance.
+
 StayNest is a full-stack responsive web application for finding flats, PGs, and rental properties.
 
 ## Features Built
@@ -20,7 +22,7 @@ StayNest is a full-stack responsive web application for finding flats, PGs, and 
 ### 1. Backend Setup
 1. Open a terminal and navigate to the backend folder:
    ```bash
-   cd c:/Developer/StayNest/backend
+   cd backend
    ```
 2. Install dependencies:
    ```bash
@@ -36,7 +38,7 @@ StayNest is a full-stack responsive web application for finding flats, PGs, and 
 ### 2. Frontend Setup
 1. Open a new terminal and navigate to the frontend folder:
    ```bash
-   cd c:/Developer/StayNest/frontend
+   cd frontend
    ```
 2. Install dependencies:
    ```bash
