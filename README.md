@@ -62,3 +62,21 @@ StayNest is a full-stack responsive web application for finding flats, PGs, and 
 - The application implements custom glassmorphism, responsive cards with hover animations, gradients, and custom modern typography using the "Inter" font.
 
 Enjoy using StayNest!
+
+## Deployment
+
+### Backend (Render)
+1.  **Push code to GitHub**: Ensure your latest changes are pushed to your repository.
+2.  **Create a New Blueprint Instance**:
+    *   Go to [Render Dashboard](https://dashboard.render.com/).
+    *   Click **New** > **Blueprint**.
+    *   Connect your GitHub repository.
+    *   Render will automatically detect the `render.yaml` file and set up the `staynest-backend` service.
+3.  **Environment Variables**:
+    *   In the Render dashboard, go to your service's **Environment** tab.
+    *   Fill in the missing values for `MONGO_URI`, `JWT_SECRET`, `RAZORPAY_KEY_ID`, `RAZORPAY_KEY_SECRET`, `OPENAI_API_KEY`, and `FRONTEND_URL`.
+
+### Frontend (Netlify/Vercel)
+1.  Set the `VITE_API_URL` environment variable to your deployed Render backend URL (e.g., `https://staynest-backend.onrender.com/api`).
+2.  Deploy the `frontend` directory using your preferred static hosting service.
+
