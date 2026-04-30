@@ -28,8 +28,8 @@ const PropertyDetails = () => {
   if (!property) return <div className="container" style={{padding: '4rem 2rem'}}>Property not found.</div>;
 
   return (
-    <div className="container" style={{ padding: '2rem 2rem 4rem' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+    <div className="container" style={{ padding: '2rem 1rem 4rem' }}>
+      <div className="details-header">
         <h1 style={{ fontSize: '2.5rem' }}>{property.title}</h1>
         <div style={{ fontSize: '2rem', fontWeight: 'bold', color: 'var(--primary-color)' }}>
           ₹{property.price}<span style={{ fontSize: '1rem', color: 'var(--text-light)' }}>/mo</span>
@@ -40,12 +40,12 @@ const PropertyDetails = () => {
         <MapPin size={20} /> {property.location?.address}
       </p>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '2rem' }}>
-        <div>
+      <div className="details-grid">
+        <div className="details-main">
           <img 
             src={property.images && property.images.length > 0 ? property.images[0] : 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&q=80'} 
             alt={property.title} 
-            style={{ width: '100%', height: '400px', objectFit: 'cover', borderRadius: '16px', marginBottom: '2rem' }}
+            style={{ width: '100%', height: 'auto', maxHeight: '500px', objectFit: 'cover', borderRadius: '16px', marginBottom: '2rem' }}
           />
           
           <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>About this property</h2>
@@ -54,7 +54,7 @@ const PropertyDetails = () => {
           </p>
           
           <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Amenities</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '2rem' }}>
+          <div className="amenities-grid">
             {property.amenities && property.amenities.map((item, idx) => (
               <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 <CheckCircle2 size={20} color="var(--primary-color)" /> {item}
@@ -64,7 +64,7 @@ const PropertyDetails = () => {
           </div>
         </div>
 
-        <div>
+        <div className="details-sidebar">
           <div className="glass-panel" style={{ padding: '2rem', position: 'sticky', top: '100px' }}>
             <h3 style={{ fontSize: '1.25rem', marginBottom: '1.5rem' }}>Contact Owner</h3>
             
@@ -114,11 +114,8 @@ const PropertyDetails = () => {
       </div>
 
       {showBookingForm && (
-        <div style={{
-          position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', 
-          background: 'rgba(0,0,0,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000
-        }}>
-          <div className="glass-panel" style={{ background: 'white', padding: '2rem', width: '90%', maxWidth: '500px', borderRadius: '16px' }}>
+        <div className="modal-overlay">
+          <div className="modal-content">
             <h2 style={{ marginBottom: '1.5rem' }}>Confirm Booking</h2>
             <div className="form-group">
               <label className="form-label">Check-in Date</label>

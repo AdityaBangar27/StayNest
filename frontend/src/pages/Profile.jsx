@@ -23,21 +23,21 @@ const Profile = () => {
   if (!user) return <div className="container" style={{padding: '4rem 2rem'}}>Loading profile...</div>;
 
   return (
-    <div className="container" style={{ padding: '2rem 2rem 4rem', maxWidth: '800px' }}>
-      <h1 style={{ marginBottom: '2rem', fontSize: '2.5rem' }}>My Profile</h1>
+    <div className="container" style={{ padding: '2rem 1rem 4rem', maxWidth: '1000px' }}>
+      <h1 style={{ marginBottom: '2rem', fontSize: 'clamp(1.5rem, 5vw, 2.5rem)' }}>My Profile</h1>
       
-      <div className="glass-panel" style={{ padding: '3rem', textAlign: 'center', marginBottom: '2rem' }}>
-        <div style={{ width: '100px', height: '100px', borderRadius: '50%', background: 'var(--primary-color)', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '3rem', fontWeight: 'bold', margin: '0 auto 1.5rem' }}>
+      <div className="glass-panel" style={{ padding: 'clamp(1.5rem, 5vw, 3rem)', textAlign: 'center', marginBottom: '2rem' }}>
+        <div style={{ width: 'clamp(80px, 15vw, 100px)', height: 'clamp(80px, 15vw, 100px)', borderRadius: '50%', background: 'var(--primary-color)', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: 'bold', margin: '0 auto 1.5rem' }}>
           {user.name.charAt(0)}
         </div>
-        <h2 style={{ fontSize: '1.75rem', marginBottom: '0.5rem' }}>{user.name}</h2>
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', color: 'var(--text-light)', marginTop: '1rem' }}>
+        <h2 style={{ fontSize: 'clamp(1.25rem, 4vw, 1.75rem)', marginBottom: '0.5rem' }}>{user.name}</h2>
+        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '1rem 2rem', color: 'var(--text-light)', marginTop: '1rem' }}>
           <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}><Mail size={16} /> {user.email}</span>
           {user.phone && <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}><Phone size={16} /> {user.phone}</span>}
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '2rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 350px), 1fr))', gap: '2rem' }}>
         <div className="glass-panel" style={{ padding: '2rem' }}>
           <h3 style={{ fontSize: '1.5rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
             <Home size={24} color="var(--primary-color)" /> My Bookings

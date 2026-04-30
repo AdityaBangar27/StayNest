@@ -1,16 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Home, Search, PlusCircle, User, LogOut } from 'lucide-react';
+import { Home, Search, PlusCircle, User, LogOut, Menu, X } from 'lucide-react';
 
 const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
 
   const handleLogout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    setIsMenuOpen(false);
     navigate('/login');
   };
+
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
     <nav className="navbar">
@@ -18,18 +22,23 @@ const Navbar = () => {
         <Link to="/" className="nav-brand" style={{ fontFamily: '"Georgia", serif', fontSize: '2rem', letterSpacing: '1px', fontStyle: 'italic', background: 'linear-gradient(45deg, var(--primary-color), var(--secondary-color))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
           <Home color="var(--primary-color)" size={32} /> StayNest
         </Link>
-        <div className="nav-links">
-          <Link to="/" className="nav-link">Home</Link>
-          <Link to="/properties" className="nav-link">Explore</Link>
+
+        <button className="mobile-menu-btn" onClick={toggleMenu}>
+          {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
+
+        <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
+          <Link to="/" className="nav-link" onClick={() => setIsMenuOpen(false)}>Home</Link>
+          <Link to="/properties" className="nav-link" onClick={() => setIsMenuOpen(false)}>Explore</Link>
           
           {token ? (
             <>
-              <Link to="/add-property" className="nav-link">
+              <Link to="/add-property" className="nav-link" onClick={() => setIsMenuOpen(false)}>
                 <span style={{display: 'flex', alignItems: 'center', gap: '4px'}}>
                   <PlusCircle size={18} /> Add Listing
                 </span>
               </Link>
-              <Link to="/profile" className="nav-link">
+              <Link to="/profile" className="nav-link" onClick={() => setIsMenuOpen(false)}>
                 <span style={{display: 'flex', alignItems: 'center', gap: '4px'}}>
                   <User size={18} /> Profile
                 </span>
@@ -40,8 +49,8 @@ const Navbar = () => {
             </>
           ) : (
             <>
-              <Link to="/login" className="nav-link">Login</Link>
-              <Link to="/register" className="btn btn-primary" style={{padding: '0.5rem 1.5rem'}}>Sign Up</Link>
+              <Link to="/login" className="nav-link" onClick={() => setIsMenuOpen(false)}>Login</Link>
+              <Link to="/register" className="btn btn-primary" style={{padding: '0.5rem 1.5rem'}} onClick={() => setIsMenuOpen(false)}>Sign Up</Link>
             </>
           )}
         </div>

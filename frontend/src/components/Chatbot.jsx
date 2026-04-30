@@ -68,10 +68,10 @@ const Chatbot = () => {
       {isOpen && (
         <div className="glass-panel" style={{
           position: 'fixed',
-          bottom: '2rem',
-          right: '2rem',
-          width: '350px',
-          height: '450px',
+          bottom: 'clamp(1rem, 5vh, 2rem)',
+          right: 'clamp(1rem, 5vw, 2rem)',
+          width: 'min(calc(100vw - 2rem), 350px)',
+          height: 'min(500px, 60vh)',
           display: 'flex',
           flexDirection: 'column',
           zIndex: 1000,
