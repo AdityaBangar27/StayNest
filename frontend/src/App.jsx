@@ -25,21 +25,9 @@ function App() {
     <Router>
       <Navbar />
       <Routes>
-        <Route path="/" element={
-          <ProtectedRoute>
-            <Home />
-          </ProtectedRoute>
-        } />
-        <Route path="/properties" element={
-          <ProtectedRoute>
-            <Properties />
-          </ProtectedRoute>
-        } />
-        <Route path="/properties/:id" element={
-          <ProtectedRoute>
-            <PropertyDetails />
-          </ProtectedRoute>
-        } />
+        <Route path="/" element={<Home />} />
+        <Route path="/properties" element={<Properties />} />
+        <Route path="/properties/:id" element={<PropertyDetails />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/profile" element={
